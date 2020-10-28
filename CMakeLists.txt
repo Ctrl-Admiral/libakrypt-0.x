@@ -167,15 +167,15 @@ set( OTHERS         CMakeLists.txt
 # -------------------------------------------------------------------------------------------------- #
 # подключаем модули CMake для тонкой настройки параметров сборки
 # -------------------------------------------------------------------------------------------------- #
-set( CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH} )
+set( CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR}/cmake ${CMAKE_MODULE_PATH} )
 include( DetectFlags )
 include( DetectHeaders )
 include( DetectLibraries )
 include( DetectIntrinsics )
 
 # -------------------------------------------------------------------------------------------------- #
-configure_file( ${CMAKE_SOURCE_DIR}/source/libakrypt.h.in
-                                               ${CMAKE_SOURCE_DIR}/source/libakrypt.h @ONLY )
+configure_file( ${CMAKE_CURRENT_LIST_DIR}/source/libakrypt.h.in
+                                               ${CMAKE_CURRENT_LIST_DIR}/source/libakrypt.h @ONLY )
 message("-- Generation of libakrypt.h is done")
 
 # -------------------------------------------------------------------------------------------------- #
