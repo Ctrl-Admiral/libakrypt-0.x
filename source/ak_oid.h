@@ -28,7 +28,7 @@
  /*! \brief Деструктор объекта. */
   ak_function_void *destroy;
  /*! \brief Освобождение контекста. */
-  ak_function_void *delete;
+  ak_function_void *del_context;
 } *ak_object;
 
 /* ----------------------------------------------------------------------------------------------- */

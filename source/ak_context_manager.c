@@ -146,9 +146,9 @@
  /* уничтожаем описание */
   if( node->description != NULL ) free( (void *)node->description );
  /* уничтожаем контекст */
-  if( node->oid->func.delete != NULL ) {
+  if( node->oid->func.del_context != NULL ) {
     if( node->ctx != NULL )
-      node->ctx = (( ak_function_free_object *) node->oid->func.delete )( node->ctx );
+      node->ctx = (( ak_function_free_object *) node->oid->func.del_context )( node->ctx );
   }
   node->handle = ak_error_wrong_handle;
   node->oid = NULL;
@@ -581,9 +581,9 @@
  /* получаем доступ к структуре управления контекстами */
   if(( manager = ak_libakrypt_get_context_manager()) == NULL ) {
     ak_error_message( ak_error_get_value(), __func__ , "using a non initialized context manager" );
-    if( oid->func.delete != NULL ) {
+    if( oid->func.del_context != NULL ) {
       if( ctx != NULL )
-        ctx = (( ak_function_free_object *) oid->func.delete )( ctx );
+        ctx = (( ak_function_free_object *) oid->func.del_context )( ctx );
     }
     return ak_error_wrong_handle;
   }
@@ -592,9 +592,9 @@
   if(( handle = ak_context_manager_add_node(
                                   manager, ctx, engine, description )) == ak_error_wrong_handle ) {
     ak_error_message( ak_error_get_value(), __func__ , "wrong creation of context manager node" );
-    if( oid->func.delete != NULL ) {
+    if( oid->func.del_context != NULL ) {
       if( ctx != NULL )
-        ctx = (( ak_function_free_object *) oid->func.delete )( ctx );
+        ctx = (( ak_function_free_object *) oid->func.del_context )( ctx );
     }
     return ak_error_wrong_handle;
   }
