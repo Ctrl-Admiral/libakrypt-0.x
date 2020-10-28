@@ -9,6 +9,10 @@
 #ifndef __AK_ASN1_H__
 #define __AK_ASN1_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_bckey.h>
 
@@ -311,6 +315,9 @@
 /*! \brief Импорт ASN.1 дерева из файла, содержащего der-последовательность. */
  int ak_asn1_context_import_from_file( ak_asn1 , const char * );
 
+#ifdef __cplusplus
+} /* конец extern "C" */
+#endif
 #endif
 /* ----------------------------------------------------------------------------------------------- */
 /*                                                                                      ak_asn1.h  */

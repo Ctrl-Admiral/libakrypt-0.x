@@ -7,6 +7,10 @@
 #ifndef __AK_CONTEXT_MANAGER_H__
 #define __AK_CONTEXT_MANAGER_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_random.h>
 
@@ -94,6 +98,9 @@
 /*! \brief Получение контекста по заданному дескриптору. */
  ak_pointer ak_handle_get_context( ak_handle , ak_oid * , ak_pointer * );
 
+#ifdef __cplusplus
+} /* конец extern "C" */
+#endif
 #endif
 /* ----------------------------------------------------------------------------------------------- */
 /*                                                                           ak_context_manager.h  */

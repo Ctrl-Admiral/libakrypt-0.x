@@ -8,6 +8,10 @@
 #ifndef    __AK_OID_H__
 #define    __AK_OID_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <libakrypt.h>
 
@@ -71,6 +75,10 @@
  ak_oid ak_oid_context_findnext_by_engine( const ak_oid, const oid_engines_t );
 /*! \brief Проверка соответствия заданного адреса корректному oid. */
  bool_t ak_oid_context_check( const ak_oid );
+
+#ifdef __cplusplus
+} /* конец extern "C" */
+#endif
 
 #endif
 /* ----------------------------------------------------------------------------------------------- */

@@ -7,6 +7,10 @@
 #ifndef __AK_MAC_H__
 #define __AK_MAC_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_oid.h>
 
@@ -62,6 +66,10 @@
 /*! \brief Применение сжимающего отображения к заданному файлу. */
  int ak_mac_context_file( ak_mac , const char* , ak_pointer , const size_t );
 
+
+#ifdef __cplusplus
+} /* конец extern "C" */
+#endif
 #endif
 /* ----------------------------------------------------------------------------------------------- */
 /*                                                                                       ak_mac.h  */

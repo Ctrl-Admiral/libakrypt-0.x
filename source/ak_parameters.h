@@ -7,6 +7,10 @@
 #ifndef    __AK_PARAMETERS_H__
 #define    __AK_PARAMETERS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_curves.h>
 
@@ -1579,6 +1583,10 @@
  extern const struct wcurve id_tc26_gost_3410_2012_512_paramSetA;
  extern const struct wcurve id_tc26_gost_3410_2012_512_paramSetB;
  extern const struct wcurve id_tc26_gost_3410_2012_512_paramSetC;
+
+#ifdef __cplusplus
+} /* конец extern "C" */
+#endif
 
 #endif
 /* ----------------------------------------------------------------------------------------------- */

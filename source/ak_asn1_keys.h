@@ -7,6 +7,10 @@
 #ifndef __AK_ASN1_KEYS_H__
 #define __AK_ASN1_KEYS_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_sign.h>
 
@@ -90,6 +94,10 @@
    на сертификат открытого ключа (тип CertificationRequest) */
  int ak_verifykey_context_import_from_request( ak_verifykey , const char * );
 /** @}*/
+
+#ifdef __cplusplus
+} /* конец extern "C" */
+#endif
 #endif
 /* ----------------------------------------------------------------------------------------------- */
 /*                                                                                 ak_asn1_keys.h  */

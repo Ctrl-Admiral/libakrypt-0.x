@@ -7,6 +7,10 @@
 #ifndef __AK_SKEY_H__
 #define __AK_SKEY_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_random.h>
 
@@ -212,6 +216,10 @@
 #ifdef LIBAKRYPT_HAVE_DEBUG_FUNCTIONS
 /*! \brief Функция выводит информацию о контексте секретного ключа в заданный файл. */
  int ak_skey_context_print_to_file( ak_skey , FILE *fp );
+#endif
+
+#ifdef __cplusplus
+} /* конец extern "C" */
 #endif
 
 #endif

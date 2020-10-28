@@ -7,6 +7,10 @@
 #ifndef    __AK_MPZN_H__
 #define    __AK_MPZN_H__
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_random.h>
 
@@ -90,6 +94,10 @@
  void ak_mpzn_to_mpz( const ak_uint64 *, const size_t , mpz_t );
 /*! \brief Преобразование mpz_t в ak_mpznxxx. */
  void ak_mpz_to_mpzn( const mpz_t , ak_uint64 *, const size_t );
+#endif
+
+#ifdef __cplusplus
+} /* конец extern "C" */
 #endif
 
 #endif
