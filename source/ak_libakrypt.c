@@ -123,26 +123,44 @@
 /* ----------------------------------------------------------------------------------------------- */
  static bool_t ak_libakrypt_test_hash_functions( void )
 {
-  int audit = ak_log_get_level();
-  if( audit >= ak_log_maximum )
+    int audit = ak_log_get_level();
+    if( audit >= ak_log_maximum )
     ak_error_message( ak_error_ok, __func__ , "testing hash functions started" );
 
- /* тестируем функцию Стрибог256 */
-  if( ak_hash_test_streebog256() != ak_true ) {
+    /* тестируем функцию Стрибог256 */
+    if( ak_hash_test_streebog256() != ak_true ) {
     ak_error_message( ak_error_get_value(), __func__, "incorrect streebog256 testing" );
     return ak_false;
-  }
+    }
 
- /* тестируем функцию Стрибог512 */
-  if( ak_hash_test_streebog512() != ak_true ) {
+    /* тестируем функцию Стрибог512 */
+    if( ak_hash_test_streebog512() != ak_true ) {
     ak_error_message( ak_error_get_value(), __func__, "incorrect streebog512 testing" );
     return ak_false;
-  }
+    }
 
-  if( audit >= ak_log_maximum )
-   ak_error_message( ak_error_ok, __func__ , "testing hash functions ended successfully" );
+    /* тестируем функцию SHA3-256 */
+    if( ak_hash_test_sha3_256() != ak_true ) {
+     ak_error_message( ak_error_get_value(), __func__, "incorrect sha3-256 testing" );
+     return ak_false;
+    }
 
- return ak_true;
+    /* тестируем функцию SHA3-384 */
+    if( ak_hash_test_sha3_384() != ak_true ) {
+      ak_error_message( ak_error_get_value(), __func__, "incorrect sha3-384 testing" );
+      return ak_false;
+    }
+
+    /* тестируем функцию SHA3-512 */
+     if( ak_hash_test_sha3_512() != ak_true ) {
+       ak_error_message( ak_error_get_value(), __func__, "incorrect sha3-512 testing" );
+       return ak_false;
+     }
+
+    if( audit >= ak_log_maximum )
+    ak_error_message( ak_error_ok, __func__ , "testing hash functions ended successfully" );
+
+    return ak_true;
 }
 
 /* ----------------------------------------------------------------------------------------------- */

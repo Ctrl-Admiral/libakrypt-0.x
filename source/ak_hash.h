@@ -14,6 +14,9 @@ extern "C" {
 /* ----------------------------------------------------------------------------------------------- */
  #include <ak_mac.h>
 
+#define SHA3_KECCAK_SPONGE_WORDS \
+    (((1600)/8)/sizeof(ak_uint64))
+
 /* ----------------------------------------------------------------------------------------------- */
 /*! \brief Структура для хранения внутренних данных функций хеширования семейства Стрибог. */
 /* ----------------------------------------------------------------------------------------------- */
@@ -27,6 +30,20 @@ extern "C" {
  /*! \brief Размер блока выходных данных (хеш-кода)*/
   size_t hsize;
 } *ak_streebog;
+
+/* ----------------------------------------------------------------------------------------------- */
+/*! \brief Структура для хранения внутренних данных функции хеширования sha-3 (Keccak) */
+/* ----------------------------------------------------------------------------------------------- */
+typedef struct sha3_context {
+    ak_uint64 saved;
+    union {                     // Состояние (из алгоритма Keccak)
+        ak_uint64 s[SHA3_KECCAK_SPONGE_WORDS];
+        ak_uint8 sb[SHA3_KECCAK_SPONGE_WORDS * 8];
+    };
+    unsigned byteIndex;         // Индекс бита (от 0 до 7), который идет после последнего отработанного
+    unsigned wordIndex;         /*! Индекс слова (от 0 до 24), которое будет обрабатываться следующим */
+    unsigned capacityWords;     // Увеличенная в два раза длина выходного хэша
+} *ak_sha3;
 
 /* ----------------------------------------------------------------------------------------------- */
 /*! \brief Функция создания контекста хеширования. */
@@ -64,6 +81,18 @@ extern "C" {
  int ak_hash_context_create_streebog256( ak_hash );
 /*! \brief Инициализация контекста функции бесключевого хеширования ГОСТ Р 34.11-2012 (Стрибог512). */
  int ak_hash_context_create_streebog512( ak_hash );
+
+/*! \brief Инициализация контекста функции хеширования SHA3 (Keccak). */
+int ak_hash_context_create_sha3( ak_sha3 ctx, unsigned bitSize);
+
+int ak_hash_context_update_sha3( ak_pointer cx, const void* in, size_t len);
+int ak_hash_context_finalize_sha3(ak_pointer cx, ak_pointer out);
+int ak_hash_context_ptr_sha3( unsigned bitSize, const void* in, size_t inSize, ak_pointer out, size_t outSize);
+bool_t ak_hash_test_sha3_256( void );
+bool_t ak_hash_test_sha3_384( void );
+bool_t ak_hash_test_sha3_512( void );
+
+
 /*! \brief Инициализация контекста функции бесключевого хеширования по заданному OID алгоритма. */
  int ak_hash_context_create_oid( ak_hash, ak_oid );
 /*! \brief Уничтожение контекста функции хеширования. */

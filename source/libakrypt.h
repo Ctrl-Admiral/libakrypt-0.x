@@ -63,7 +63,7 @@ extern "C" {
 #define LIBAKRYPT_HAVE_LOCALE_H
 #define LIBAKRYPT_HAVE_SIGNAL_H
 #define LIBAKRYPT_HAVE_GETOPT_H
-/* #undef LIBAKRYPT_HAVE_LIBINTL_H */
+#define LIBAKRYPT_HAVE_LIBINTL_H
 
 /* ----------------------------------------------------------------------------------------------- */
 #ifdef LIBAKRYPT_HAVE_SYSTYPES_H
