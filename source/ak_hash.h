@@ -32,7 +32,7 @@ extern "C" {
 } *ak_streebog;
 
 /* ----------------------------------------------------------------------------------------------- */
-/*! \brief Структура для хранения внутренних данных функции хеширования sha-3 (Keccak) */
+/*! \brief Структура для хранения внутренних данных функции хеширования SHA-3 (Keccak) */
 /* ----------------------------------------------------------------------------------------------- */
 typedef struct sha3_context {
     ak_uint64 saved;
@@ -85,11 +85,17 @@ typedef struct sha3_context {
 /*! \brief Инициализация контекста функции хеширования SHA3 (Keccak). */
 int ak_hash_context_create_sha3( ak_sha3 ctx, unsigned bitSize);
 
+/*! \brief Обновление контекста функции хеширования SHA3 (Keccak). */
 int ak_hash_context_update_sha3( ak_pointer cx, const void* in, size_t len);
+/*! \brief Обновление состояния и вычисление результата применения функции хеширования SHA3 (Keccak). */
 int ak_hash_context_finalize_sha3(ak_pointer cx, ak_pointer out);
+/*! \brief Применение функции хеширования SHA3 (Keccak) для заданной области памяти. */
 int ak_hash_context_ptr_sha3( unsigned bitSize, const void* in, size_t inSize, ak_pointer out, size_t outSize);
+/*! \brief Тест функции хеширования SHA3-256 (Keccak). */
 bool_t ak_hash_test_sha3_256( void );
+/*! \brief Тест функции хеширования SHA3-384 (Keccak). */
 bool_t ak_hash_test_sha3_384( void );
+/*! \brief Тест функции хеширования SHA3-512 (Keccak). */
 bool_t ak_hash_test_sha3_512( void );
 
 

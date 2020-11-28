@@ -101,6 +101,14 @@ static inline void ak_hash_keccakf(ak_uint64 s[25])
     }
 }
 
+/**
+ * @brief Обновление контекста хэширования sha-3
+ * @param[in, out] cx -- контекст функции хэширования
+ * @param[in] in -- Указатель на входные данные, для которых вычисляется хеш-код.
+ * @param[in] len -- длина сообщения
+ * @return В случае успеха функция возвращает ноль (\ref ak_error_ok). В противном случае
+    возвращается код ошибки.
+ */
 int ak_hash_context_update_sha3( ak_pointer cx, const void* in, size_t len)
 {
     ak_sha3 ctx = (ak_sha3) cx;
@@ -171,6 +179,12 @@ int ak_hash_context_update_sha3( ak_pointer cx, const void* in, size_t len)
     return ak_error_ok;
 }
 
+/**
+ * @param[in] cx -- контекст функции хэширования
+ * @param[out] out -- Область памяти, куда будет помещен результат.
+ * @return В случае успеха функция возвращает ноль (\ref ak_error_ok). В противном случае
+    возвращается код ошибки.
+ */
 int ak_hash_context_finalize_sha3(ak_pointer cx, ak_pointer out)
 {
     ak_sha3 ctx = ( ak_sha3 ) cx;
@@ -211,6 +225,15 @@ int ak_hash_context_finalize_sha3(ak_pointer cx, ak_pointer out)
     return ak_error_ok;
 }
 
+/**
+ * @param[in] bitSize -- версия sha-3 (256, 384, 512)
+ * @param[in] in -- Указатель на входные данные, для которых вычисляется хеш-код.
+ * @param[in] inSize -- размер входных данных
+ * @param[out] out Область памяти, куда будет помещен результат.
+ * @param[in] outSize -- размер области памяти, куда будет помещен результат
+ * @return В случае успеха функция возвращает ноль (\ref ak_error_ok). В противном случае
+    возвращается код ошибки.
+ */
 int ak_hash_context_ptr_sha3( unsigned bitSize, const void* in, size_t inSize, ak_pointer out, size_t outSize )
 {
     int error;
